@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Input Data Storage</title>
+
+</head>
+<body>
+    <!-- <h2>Input Data Storage</h2>
+    <label for="userInput">Enter Data:</label>
+    <input type="text" id="userInput" placeholder="Enter data here">
+    <br>
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="clearData()">Clear Data</button>
+    <button onclick="loadData()">Load Data</button> -->
+
+    login
+</body>
+<script>
+    // Function to localStorage
+    function saveData() {
+        // Get input data
+        var inputData = document.getElementById("userInput").value;
+        
+        // Check input is not empty
+        if (inputData.trim() !== '') {
+            // Store data in localStorage
+            localStorage.setItem("userData", inputData);
+            alert("Data saved to localStorage!");
+        } else {
+            alert("Please enter some data before saving.");
+        }
+    }
+
+
+    function clearData() {
+        // Clear input field
+        document.getElementById("userInput").value = '';
+
+        
+        localStorage.removeItem("userData");
+        
+        alert("Data cleared from input field and localStorage!");
+    }
+
+   
+    
+</script>
+</html>

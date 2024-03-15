@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3x3 Table</title>
+<style>
+  table {
+    font-family: Arial, sans-serif;
+    border-collapse: collapse;
+    width: 50%;
+    margin: auto;
+  }
+
+  th, td {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 8px;
+  }
+
+  th {
+    background-color: #f2f2f2;
+  }
+</style>
+</head>
+<body>
+
+    <center>
+        <input type="text" placeholder="enter youre name" id="name"><br><br>
+        <input type="email" placeholder="enter youre email" id="email"><br><br>
+        <input type="number" placeholder="enter youre number" id="number"><br><br>
+    </center>
+    <button onclick="addData()" style="width: 100%;background: transparent;">add data</button><br><br>
+    <button onclick="cleardata()"style="width: 100%;background: transparent;">cleardata</button>
+    <center><h2>3x3 Table</h2></center>
+    <table>
+  <tr>
+    <th>name</th>
+    <th>email</th>
+    <th>number</th>
+    <th>remove data</th>
+  </tr>
+ <tbody id="tbody">
+
+ </tbody>
+  </tr>
+</table><br><br>
+
+</body>
+<script>
+    let list = JSON.parse(localStorage.getItem("list")) || [];
+
+let addData = ()=>{
+    let name = document.getElementById("name").value;
+        let  email= document.getElementById("email").value;
+        let  number= document.getElementById("number").value;
+
+        let data={
+            name,
+            email,
+            number
+        }
+        list.push(data);
+
+        localStorage.setItem("list",JSON.stringify(list))
+        location.reload()
+}
+// data put in table
+let tbody = document.getElementById('tbody')
+let loaddata = () => {
+        let tr = document.createElement('tr');
+        list.map((val, ind) => {
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                          <td>${val.name}</td>
+                          <td>${val.email}</td>
+                          <td>${val.number}</td>
+                          <td><button onclick="removedata(${ind})">remove data </button></td>
+                          `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // clear data in table and localStorage
+    let cleardata = () => {
+      // Example of removing items one by one from localStorage
+for (let i = 0; i < localStorage.length; i++) {
+    const key = localStorage.key(i);
+    localStorage.removeItem(key);
+    console.log(`Removed item with key: ${key} `);
+}
+
+        location.reload();
+    }
+
+    // remove data 
+function removedata(index){
+  result = list[index]
+
+  let newlist=list.filter((val)=>val.name !== result.name)
+
+  localStorage.setItem("list",JSON.stringify(newlist))
+  location.reload()
+
+}
+
+    loaddata();
+</script>
+</html>

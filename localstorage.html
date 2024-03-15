@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+     <!-- local storage access -->
+     <script>
+        // console.log(localStorage);
+        // console.log(sessionStorage);
+        // console.log(indexedDB);
+
+        let result = localStorage.getItem("name")
+        console.log(result);
+
+        let resultt=localStorage.getItem("jaysaradar")
+        
+        console.log(resultt);
+
+        //clear methode in local storage
+        localStorage.clear()
+        let name="saradarf"
+        // let set=localStorage.setItem("key",variyable name,set)
+
+        let set=localStorage.setItem("name",name)
+        console.log(set);
+
+        // let arr in to localStorage
+
+        let arr=[2324,43,5,54,54,5,5,45,576757]
+        localStorage.setItem("data",JSON.stringify(arr))
+        console.log(arr);
+        
+        // arr conver to javascript
+        backend=JSON.parse(localStorage.getItem("data"))
+        console.log(backend);
+
+
+
+        let object=
+            {
+                name:"darshan",
+                surname:"satani"
+            }
+            localStorage.setItem("sardar",JSON.stringify(object))
+            console.log(object);
+
+            sardar=JSON.parse(localStorage.getItem("sardar"))
+            console.log(sardar);
+        
+
+     </script>
+</body>
+</html>

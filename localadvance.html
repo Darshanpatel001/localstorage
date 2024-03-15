@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+  <center>
+    <input type="text" placeholder="enter youre name" id="name"><br><br>
+    <input type="text" placeholder="enter youre age" id="age"><br><br>
+    <table border="1" cellspacing="0" cellpadding="10px">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Age</th>
+            </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+    </table> <br><br>
+
+
+    <button onclick="addData()" style="width: 100%;background: transparent;">add data</button><br><br>
+    <button onclick="cleardata()"style="width: 100%;background: transparent;">cleardata</button>
+</body>
+  </center>
+<script>
+    let list = JSON.parse(localStorage.getItem("list")) || [];
+    let addData = () => {
+        let name = document.getElementById("name").value;
+        let age = document.getElementById("age").value;
+
+        let data = {
+            name,
+            age
+        }
+
+        list.push(data)
+
+        // set locatstorage
+
+        localStorage.setItem("list", JSON.stringify(list))
+        location.reload()
+    }
+
+    // data aad in table
+    let tbody = document.getElementById('tbody')
+    let loaddata = () => {
+        let tr = document.createElement('tr');
+        list.map((val, ind) => {
+            let tr = document.createElement("tr");
+            tr.innerHTML = `
+                          <td>${val.name}</td>
+                          <td>${val.age}</td>
+                          `;
+            tbody.appendChild(tr);
+        });
+    }
+
+    // clear data 
+    let cleardata = () => {
+        localStorage.removeItem("list")
+        location.reload();
+    }
+    loaddata();
+</script>
+
+</html>

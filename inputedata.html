@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" placeholder="enter yooure name" id="usernamee">
+    <input type="email" placeholder="enter yooure email" id="email">
+    <input type="password" placeholder="enter yooure password" id="password">
+    <button onclick="test()">click here</button>
+</body>
+<script>
+function test (){
+    
+    let userr=document.getElementById("usernamee").value
+    let emaill=document.getElementById("email")
+    let passwordd=document.getElementById("password")
+
+    user=localStorage.setItem("userr",userr)
+    em=localStorage.setItem("emaill",JSON.stringify(emaill))
+    pass=localStorage.setItem("password",JSON.stringify(passwordd))
+}
+</script>
+</html>
